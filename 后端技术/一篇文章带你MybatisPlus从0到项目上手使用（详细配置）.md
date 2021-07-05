@@ -1244,3 +1244,10 @@ public void testUpdateWrapper() {
 
 
 
+参考：
+
+https://mp.baomidou.com/guide
+
+https://juejin.cn/post/6847902215504396296#heading-49
+
+https://mp.weixin.qq.com/s/tKeOw8JiSC8G4mIqQvReYA
