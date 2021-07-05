@@ -1226,7 +1226,7 @@ public void testUpdateWrapper() {
 }
 ```
 
-输出结果：
+输出结果
 
 ```
 ==>  Preparing: UPDATE tbl_user SET email=? WHERE is_deleted=0 AND (name LIKE ? AND age >= ? AND age <= ?)
