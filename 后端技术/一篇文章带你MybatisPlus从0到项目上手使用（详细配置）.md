@@ -668,6 +668,8 @@ User(id=5, name=Billie, age=24, email=test5@baomidou.com, deleted=false)
 User(id=6, name=Xiangji, age=18, email=test6@baomidou.com, deleted=false)
 ```
 
+#### 配置输出日志
+
 发现只有6天，id为7的这一条数据没有查询出来，仔细看代码我们也没有添加限定条件查询，直接查询的所有，它是如何实现的呢？我们可以输出 `MyBatisPlus` 生成的 SQL 来分析一下，在配置文件中进行配置：
 
 ```yaml
