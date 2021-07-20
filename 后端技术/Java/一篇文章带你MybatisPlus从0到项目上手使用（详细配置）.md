@@ -6,7 +6,7 @@
 
 在没用MybatisPlus（MP）之前，如果你常常每天都要重复写CRUD的SQL，对这些大量重复性且单一的 **SQL** 已经不耐烦了，它是对 `MyBatis` 框架的进一步增强，能够极大地简化我们的持久层代码，那么你何不试试花几分钟来阅读这篇文章，学习了解一下。
 
-
+博客网站 https://www.weiye.link
 
 ## MybatisPlus（MP） 是什么
 
@@ -94,7 +94,7 @@ INSERT INTO tbl_user (id, name, age, email) VALUES
 
 #### 2、创建SpringBoot项目
 
-![image-20210702170553291](http://img.weiye.link/article/20210702170553.png)
+![20210702170553](https://cdn.jsdelivr.net/gh/wilbur147/cdnPictureBed/article/20210714141008.png)
 
 #### 3、添加依赖
 
@@ -328,7 +328,7 @@ mybatis-plus:
 
 在以上的结果，我们可以看到已经打印出了数据库中的全部数据。而并没有看到平时我们需要写的 **mapper.xml** 文件，只是用到了 userMapper中的 **selectList()** 方法，而 **UserMapper** 继承了 **BaseMapper** 这个接口，这个接口便是 **MybatisPlus** 提供给我们的，我们再来看下这个接口给我们提供了哪些方法。
 
-​							![image-20210702174858005](http://img.weiye.link/article/20210702174858.png)
+​							![20210702174858](https://cdn.jsdelivr.net/gh/wilbur147/cdnPictureBed/article/20210714141056.png)
 
 具体细节可以查阅其源码自行体会，其实大概看名称都知道能代表什么意思，注释都是中文的，非常容易理解。
 
@@ -431,7 +431,7 @@ public interface UserMapper extends BaseMapper<User> {
 
 `MyBatisPlus` 默认扫描的是类路径下的 `mapper` 目录，这可以从源码中得到体现：
 
-![image-20210705111023203](http://img.weiye.link/article/20210705111023.png)
+![20210705111023](https://cdn.jsdelivr.net/gh/wilbur147/cdnPictureBed/article/20210714141121.png)
 
 所以我们直接将 `Mapper` 配置文件放在该目录下就没有任何问题，可如果不是这个目录，我们就需要进行配置，比如：
 
@@ -458,7 +458,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
 可以在代码中看到直接使用的是 `baseMapper` ，没有使用 userMapper 来调用接口，查看 `ServiceImpl` 的源码：
 
-![image-20210705112924170](http://img.weiye.link/article/20210705112924.png)
+![20210705112924](https://cdn.jsdelivr.net/gh/wilbur147/cdnPictureBed/article/20210714141137.png)
 
 可以看到它为我们注入了一个 `BaseMapper` 对象，而它是第一个泛型类型，也就是 `UserMapper ` 类型，所以我们可以直接使用这个 `baseMapper` 来调用 `Mapper` 中的方法。
 
@@ -584,7 +584,7 @@ User(id=3, name=Tom, age=28, email=test3@baomidou.com)
 
 在这个数据为王的时代，数据就是财富，所以一般并不会有哪个系统在删除某些重要数据时真正删掉了数据，通常都是在数据库中建立一个状态列，让其默认为 0，当为 0 时，用户可见；当执行了删除操作，就将状态列改为 1，此时用户不可见，但数据还是在表中的。
 
-![image-20210705143312198](http://img.weiye.link/article/20210705143312.png)
+![20210705143312](https://cdn.jsdelivr.net/gh/wilbur147/cdnPictureBed/article/20210714141214.png)
 
 按照《阿里巴巴 Java 开发手册》第 5 章 MySQL 数据库相关的建议，我们来为数据表新增一个`is_deleted` 字段：
 
@@ -630,7 +630,7 @@ public class User{
 }
 ```
 
-![image-20210705143531920](http://img.weiye.link/article/20210705143532.png)
+![20210705143532](https://cdn.jsdelivr.net/gh/wilbur147/cdnPictureBed/article/20210714141235.png)
 
 还是参照《阿里巴巴 Java 开发手册》第 5 章 MySQL 数据库相关的建议，对于布尔类型变量，不能加 is 前缀，所以我们的属性被命名为 `deleted`，但此时就无法与数据表的字段进行对应了，所以我们需要使用 `@TableField` 注解来声明一下数据表的字段名，而 `@TableLogin` 注解用于设置逻辑删除属性；此时我们执行删除操作：
 
@@ -643,7 +643,7 @@ public void testRemove() {
 
 然后查询数据库：
 
-​												![image-20210705144218802](http://img.weiye.link/article/20210705144218.png)
+​												![20210705144218](https://cdn.jsdelivr.net/gh/wilbur147/cdnPictureBed/article/20210714141249.png)
 
 数据ID为7的这一条已经被逻辑删除，is_deleted字段变成了1
 
@@ -680,7 +680,7 @@ mybatis-plus:
 
 然后我们从新查询一遍，再看输出日志：
 
-![image-20210705145014023](http://img.weiye.link/article/20210705145014.png)
+![20210705145014](https://cdn.jsdelivr.net/gh/wilbur147/cdnPictureBed/article/20210714141314.png)
 
 发现给我们自动添加了删除条件，只查询未删除（0）的数据，已删除（1）的数据就直接过滤掉了。
 
@@ -702,7 +702,7 @@ mybatis-plus:
 
 翻阅《阿里巴巴 Java 开发手册》，在第 5 章 MySQL 数据库可以看到这样一条规范：
 
-![image-20210705145839621](http://img.weiye.link/article/20210705145839.png)
+![202107051458391](https://cdn.jsdelivr.net/gh/wilbur147/cdnPictureBed/article/20210714141941.png)
 
 对于一张数据表，它必须具备三个字段：
 
@@ -939,30 +939,30 @@ public void testUpdate() {
 那么接下来我们就来模拟这一过程。
 
 ```java
-    @Test
-    public void testOptimisticLock() {
-        // A、B管理员读取数据
-        User A = userMapper.selectById(6L);
-        User B = userMapper.selectById(6L);
-        // B管理员先修改
-        B.setAge(15);
-        int result = userMapper.updateById(B);
-        if (result == 1) {
-            System.out.println("B管理员修改成功!");
-        } else {
-            System.out.println("B管理员修改失败!");
-        }
-        // A管理员后修改
-        A.setAge(25);
-        int result2 = userMapper.updateById(A);
-        if (result2 == 1) {
-            System.out.println("A管理员修改成功!");
-        } else {
-            System.out.println("A管理员修改失败!");
-        }
-        // 最后查询
-        System.out.println(userMapper.selectById(6L));
+@Test
+public void testOptimisticLock() {
+    // A、B管理员读取数据
+    User A = userMapper.selectById(6L);
+    User B = userMapper.selectById(6L);
+    // B管理员先修改
+    B.setAge(15);
+    int result = userMapper.updateById(B);
+    if (result == 1) {
+        System.out.println("B管理员修改成功!");
+    } else {
+        System.out.println("B管理员修改失败!");
     }
+    // A管理员后修改
+    A.setAge(25);
+    int result2 = userMapper.updateById(A);
+    if (result2 == 1) {
+        System.out.println("A管理员修改成功!");
+    } else {
+        System.out.println("A管理员修改失败!");
+    }
+    // 最后查询
+    System.out.println(userMapper.selectById(6L));
+}
 ```
 
 输出结果：
@@ -1134,7 +1134,7 @@ User(id=6, name=Xiangji, age=15, email=test6@baomidou.com, gmtCreate=2021-07-05T
 
 在分页插件中我们简单地使用了一下条件构造器（`Wrapper`），下面我们来详细了解一下。先来看看 `Wrapper` 的继承体系：
 
-![image-20210705160605939](http://img.weiye.link/article/20210705160606.png)
+![20210705160606](https://cdn.jsdelivr.net/gh/wilbur147/cdnPictureBed/article/20210714142202.png)
 
 分别介绍一下它们的作用：
 
@@ -1242,7 +1242,7 @@ public void testUpdateWrapper() {
 
 最后，如果感觉碎片化的代码片段了解得不是很透彻，可以下载源码查阅 [GitHub源码下载](https://github.com/wilbur147/xiangStudy/tree/main/lab-springBoot/MybatisPlus-1) ，下载下来后更新一下maven便可以直接启动测试，附上代码目录
 
-​												![image-20210705164231101](http://img.weiye.link/article/20210705164231.png)
+​												![20210705164231](https://cdn.jsdelivr.net/gh/wilbur147/cdnPictureBed/article/20210714144502.png)
 
 
 
