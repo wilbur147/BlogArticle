@@ -123,11 +123,13 @@
 
 
 
-然后我们可以通过 命令行 `mvn package` 进行打包
+1. 然后我们可以通过 命令行 `mvn package` 进行打包
 
 ![image-20210721151829276](https://cdn.jsdelivr.net/gh/wilbur147/cdnPictureBed/article/20210721151829.png)
 
+2. 也可以通过 `idea` 右侧 有个 `maven` 组件 打开， 点击 `package` 也可以进行打包
 
+![image-20210721154437634](https://cdn.jsdelivr.net/gh/wilbur147/cdnPictureBed/article/20210721154437.png)
 
 可以看到已经成功打包，并且多了一个 `target` 文件夹，里面就有我们打包好的`jar包`
 
