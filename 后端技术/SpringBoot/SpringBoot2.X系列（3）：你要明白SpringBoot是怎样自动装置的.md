@@ -28,7 +28,7 @@
 
 
 
-看到这里也解惑了上一期 [SpringBoot系列（二）入门，快速构建项目](https://www.weiye.link/229/)中我没有指定版本也不会报错的问题。
+看到这里也解惑了上一期 [SpringBoot系列（二）入门，快速构建项目](https://www.weiye.link/229.html/)中我没有指定版本也不会报错的问题。
 
 
 

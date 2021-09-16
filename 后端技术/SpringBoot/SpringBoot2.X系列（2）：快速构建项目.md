@@ -65,12 +65,15 @@
 
 
 
+### 三、了解项目目录结构
+
 项目创建完成后，我们来解读一下目录结构
 
 
 
 ![image-20210721111806809](https://cdn.jsdelivr.net/gh/wilbur147/cdnPictureBed/article/20210721111807.png)
 
+- `src/main/java` 入口(启动) 类及程序的开发目录。在这个目录下进行业务开发、创建实体层、控制器层、数据连接层等；
 - `resources` 文件夹中目录结构：
   - `static` ：保存所有的静态资文件， **js css images**
   - `templates` ：保存所有的模板页面（Spring Boot默认jar包使用嵌入式的Tomcat，默认不支持JSP页
@@ -122,7 +125,7 @@
 
 
 
-### 三、简单部署
+### 四、简单部署
 
 首先要确认 `POM` 文件里面是否有 maven 编译插件
 

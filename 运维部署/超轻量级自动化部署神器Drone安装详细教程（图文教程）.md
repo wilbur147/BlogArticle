@@ -1,10 +1,4 @@
-| Row Key | TimeStamp | info |      | area |      |
-| ------- | --------- | ---- | ---- | ---- | ---- |
-|         |           |      |      |      |      |
-|         |           |      |      |      |      |
-|         |           |      |      |      |      |
-
-## *前言*
+## 前言
 
 现在我们在日常开发或者生产环境中，往往会经常弄一套自动化部署方案来节约时间成本。现在比较流行的一种就是`Gitlab+Jenkins`实现方案，但是这种方案占用内存还是比较大，需要的服务器内存也得8G左右，不然很难流畅运行，而且部署起来也不快。最近小翔发现了一款神器 [Drone](https://www.drone.io/) ,轻量级的CI/CD工具，我拿来结合 Gogs 使用所消耗的内存占用都不到1G，这里就给大家聊聊这款工具。
 
@@ -27,7 +21,7 @@ drone引入pipline的概念，整个build过程由多个stage组成，每一个s
 
 ## 使用教程
 
-因为本篇文章是用 `Gogs` 的git版本管理存储代码，安装可以参考我上一篇文章， [Gogs安装部署](https://www.weiye.link/200/)
+因为本篇文章是用 `Gogs` 的git版本管理存储代码，安装可以参考我上一篇文章， [Gogs安装部署](https://www.weiye.link/200.html/)
 
 
 
@@ -269,6 +263,23 @@ app_name='drone-study'
 docker restart ${app_name}
 echo '----restart container----'
 ```
+
+
+
+- `Dockerfile`文件配置如下：
+
+```dockerfile
+# Docker image for springboot file run
+# VERSION 1.0
+# Author: Xiang
+# 基础镜像使用java
+FROM openjdk:8-jdk-alpine
+ADD drone.jar app.jar
+EXPOSE 6003
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","app.jar"]
+```
+
+
 
 - 文件编写完成后，git push到仓库中，gogs会通知drone进行部署，drone找到`.drone.yml`配置文件，就会按照配置文件中的步骤进行构建了，部署期间可以在drone中查看到每一步的部署情况
 

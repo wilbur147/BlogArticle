@@ -32,7 +32,7 @@ docker pull gogs/gogs
 
 ```bash
 docker run -p 30022:22 -p 30080:3000 --name=gogs \
--v /mydata/gogs:/data  \
+-v /www/wwwroot/data/docker/gogs:/data  \
 -d gogs/gogs
 ```
 
@@ -113,10 +113,10 @@ docker run -p 30022:22 -p 30080:3000 --name=gogs \
 
 - 因为我的服务器是阿里云的，所以我们要先在域名控制台新增一个 gogs的子域名，其它服务器同样的道理，阿里域名解析地址： [https://dns.console.aliyun.com/](https://dns.console.aliyun.com/)
 
-![image-20210716173824167](https://cdn.jsdelivr.net/gh/wilbur147/cdnPictureBed/article/20210716173824.png)
+![image-20210809111507012](https://cdn.jsdelivr.net/gh/wilbur147/cdnPictureBed/article/20210809111507.png)
 
 - 点击确定就新增好了一个子域名
-- 然后安装nginx并配置域名反向代理我们服务器本地的ip加端口，nginx安装配置可以参考我的这篇文章：[nginx安装]()
+- 然后安装nginx并配置域名反向代理我们服务器本地的ip加端口
 - 找到我们的nginx目录并进入nginx的conf文件夹，vi编辑nginx.conf，新增server代码
 
 HTTP配置： [Nginx-Http配置点我](https://cdn.jsdelivr.net/gh/wilbur147/cdnPictureBed/article/gogs-http-nginx.conf)
